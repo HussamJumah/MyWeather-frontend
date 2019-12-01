@@ -13,6 +13,7 @@
 		2E519B7D23920A59000AFF3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E519B7B23920A59000AFF3F /* Main.storyboard */; };
 		2E519B7F23920A5B000AFF3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E519B7E23920A5B000AFF3F /* Assets.xcassets */; };
 		2E519B8223920A5B000AFF3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E519B8023920A5B000AFF3F /* LaunchScreen.storyboard */; };
+		2E8626C32393696F007640EB /* RegisterationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8626C22393696F007640EB /* RegisterationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2E519B7E23920A5B000AFF3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E519B8123920A5B000AFF3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E519B8323920A5B000AFF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E8626C22393696F007640EB /* RegisterationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				2E519B7E23920A5B000AFF3F /* Assets.xcassets */,
 				2E519B8023920A5B000AFF3F /* LaunchScreen.storyboard */,
 				2E519B8323920A5B000AFF3F /* Info.plist */,
+				2E8626C22393696F007640EB /* RegisterationViewController.swift */,
 			);
 			path = MyWeather;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E519B7A23920A59000AFF3F /* ViewController.swift in Sources */,
+				2E8626C32393696F007640EB /* RegisterationViewController.swift in Sources */,
 				2E519B7623920A59000AFF3F /* AppDelegate.swift in Sources */,
 				2E519B7823920A59000AFF3F /* SceneDelegate.swift in Sources */,
 			);
