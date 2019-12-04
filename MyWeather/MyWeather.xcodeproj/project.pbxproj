@@ -15,6 +15,7 @@
 		2E519B8223920A5B000AFF3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E519B8023920A5B000AFF3F /* LaunchScreen.storyboard */; };
 		2E8626C32393696F007640EB /* RegisterationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8626C22393696F007640EB /* RegisterationViewController.swift */; };
 		2E8626C523946AEE007640EB /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8626C423946AEE007640EB /* HomePageViewController.swift */; };
+		6BA6436F2397467F00D32A6E /* ModalPasswordErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA6436E2397467F00D32A6E /* ModalPasswordErrorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2E519B8323920A5B000AFF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E8626C22393696F007640EB /* RegisterationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterationViewController.swift; sourceTree = "<group>"; };
 		2E8626C423946AEE007640EB /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		6BA6436E2397467F00D32A6E /* ModalPasswordErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPasswordErrorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2E519B8323920A5B000AFF3F /* Info.plist */,
 				2E8626C22393696F007640EB /* RegisterationViewController.swift */,
 				2E8626C423946AEE007640EB /* HomePageViewController.swift */,
+				6BA6436E2397467F00D32A6E /* ModalPasswordErrorViewController.swift */,
 			);
 			path = MyWeather;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				2E8626C32393696F007640EB /* RegisterationViewController.swift in Sources */,
 				2E519B7623920A59000AFF3F /* AppDelegate.swift in Sources */,
 				2E8626C523946AEE007640EB /* HomePageViewController.swift in Sources */,
+				6BA6436F2397467F00D32A6E /* ModalPasswordErrorViewController.swift in Sources */,
 				2E519B7823920A59000AFF3F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

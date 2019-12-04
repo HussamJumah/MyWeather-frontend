@@ -10,12 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var UsernameTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-  
+  //assume keyboard hides
+    func textFieldShouldReturn(UsernameTextField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        
+        return true
+    }
 
 }
 
