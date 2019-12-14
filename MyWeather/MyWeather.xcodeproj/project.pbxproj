@@ -16,6 +16,12 @@
 		2E8626C32393696F007640EB /* RegisterationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8626C22393696F007640EB /* RegisterationViewController.swift */; };
 		2E8626C523946AEE007640EB /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8626C423946AEE007640EB /* HomePageViewController.swift */; };
 		2E9879E823A339FF006D600C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E9879E723A339FF006D600C /* MapKit.framework */; };
+		2E9879EB23A33A9D006D600C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9879EA23A33A9D006D600C /* User.swift */; };
+		2EF8DB7823A33C6100543CF2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8DB7723A33C6100543CF2 /* Comment.swift */; };
+		2EF8DB7A23A33CC200543CF2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8DB7923A33CC200543CF2 /* Weather.swift */; };
+		2EF8DB7C23A33E5A00543CF2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8DB7B23A33E5A00543CF2 /* Session.swift */; };
+		2EF8DB8023A3435000543CF2 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8DB7E23A3435000543CF2 /* CommentTableViewCell.swift */; };
+		2EF8DB8123A3435000543CF2 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF8DB7F23A3435000543CF2 /* CommentTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		2E8626C22393696F007640EB /* RegisterationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterationViewController.swift; sourceTree = "<group>"; };
 		2E8626C423946AEE007640EB /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		2E9879E723A339FF006D600C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2E9879EA23A33A9D006D600C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2EF8DB7723A33C6100543CF2 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		2EF8DB7923A33CC200543CF2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		2EF8DB7B23A33E5A00543CF2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		2EF8DB7E23A3435000543CF2 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		2EF8DB7F23A3435000543CF2 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,8 @@
 		2E519B7423920A59000AFF3F /* MyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				2EF8DB7D23A341EA00543CF2 /* Cells */,
+				2E9879E923A33A79006D600C /* Models */,
 				2E9879E523A3386E006D600C /* View Controllers */,
 				2E519B7523920A59000AFF3F /* AppDelegate.swift */,
 				2E519B7723920A59000AFF3F /* SceneDelegate.swift */,
@@ -71,6 +85,7 @@
 				2E519B7E23920A5B000AFF3F /* Assets.xcassets */,
 				2E519B8023920A5B000AFF3F /* LaunchScreen.storyboard */,
 				2E519B8323920A5B000AFF3F /* Info.plist */,
+				2EF8DB7B23A33E5A00543CF2 /* Session.swift */,
 			);
 			path = MyWeather;
 			sourceTree = "<group>";
@@ -91,6 +106,25 @@
 				2E9879E723A339FF006D600C /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E9879E923A33A79006D600C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2E9879EA23A33A9D006D600C /* User.swift */,
+				2EF8DB7723A33C6100543CF2 /* Comment.swift */,
+				2EF8DB7923A33CC200543CF2 /* Weather.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2EF8DB7D23A341EA00543CF2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2EF8DB7E23A3435000543CF2 /* CommentTableViewCell.swift */,
+				2EF8DB7F23A3435000543CF2 /* CommentTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +188,7 @@
 				2E519B8223920A5B000AFF3F /* LaunchScreen.storyboard in Resources */,
 				2E519B7F23920A5B000AFF3F /* Assets.xcassets in Resources */,
 				2E519B7D23920A59000AFF3F /* Main.storyboard in Resources */,
+				2EF8DB8123A3435000543CF2 /* CommentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,11 +199,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EF8DB7A23A33CC200543CF2 /* Weather.swift in Sources */,
 				2E519B7A23920A59000AFF3F /* LoginViewController.swift in Sources */,
 				2E8626C32393696F007640EB /* RegisterationViewController.swift in Sources */,
+				2E9879EB23A33A9D006D600C /* User.swift in Sources */,
+				2EF8DB7823A33C6100543CF2 /* Comment.swift in Sources */,
 				2E519B7623920A59000AFF3F /* AppDelegate.swift in Sources */,
 				2E8626C523946AEE007640EB /* HomePageViewController.swift in Sources */,
+				2EF8DB8023A3435000543CF2 /* CommentTableViewCell.swift in Sources */,
 				2E519B7823920A59000AFF3F /* SceneDelegate.swift in Sources */,
+				2EF8DB7C23A33E5A00543CF2 /* Session.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

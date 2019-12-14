@@ -23,6 +23,9 @@ class LoginViewController: UIViewController {
             
             self.present(alertController, animated: true, completion: nil)
         } else {
+            Session.loggedInUser = User(username: self.UsernameTextField.text!, password: self.PasswordTextFieeld.text!, email: "hussam.jum@gmail.com", defaultLocation: "New York")
+            
+            
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let homePage = storyBoard.instantiateViewController(withIdentifier: "HomePageId") as! HomePageViewController
             
