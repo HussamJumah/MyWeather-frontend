@@ -5,13 +5,14 @@
 //  Created by Hussam Jumah on 12/1/19.
 //  Copyright © 2019 Hussam Jumah. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 class HomePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Variable
     var currentWeather: Weather?
-    
+
+
     // Outlets
     @IBOutlet weak var SearchNewLocation:UITextField!
     @IBOutlet weak var weatherLocation: UILabel!
@@ -38,6 +39,9 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
         self.commentsTable.delegate = self
         self.commentsTable.dataSource = self
         self.commentsTable.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsCellId")
@@ -47,6 +51,8 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             self.currentWeather = getWeather(location: user.defaultLocation)
             self.updateView()
         }
+        
+        
         
         getCurrentDate()
 
