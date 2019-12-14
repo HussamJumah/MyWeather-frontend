@@ -11,7 +11,7 @@ import UIKit
 class HomePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Variable
     var currentWeather: Weather?
-
+    private let dataManager = DataManager(baseURL: API.AuthenticatedBaseURL)
 
     // Outlets
     @IBOutlet weak var SearchNewLocation:UITextField!
@@ -39,8 +39,10 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+   // Fetch Weather Data
+   dataManager.weatherDataForLocation(latitude: Defaults.Latitude, longitude: Defaults.Longitude) { (response, error) in
+       print(response)
+   }
         
         self.commentsTable.delegate = self
         self.commentsTable.dataSource = self
@@ -55,6 +57,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         getCurrentDate()
+        
 
     }
     
@@ -110,3 +113,4 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
 }
+
