@@ -40,7 +40,7 @@ class RegisterationViewController: UIViewController {
         guard let userInfo = notification.userInfo else {return}
         guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         // tag 1 = comment field
-        guard let field = activeField, field.tag == 3 || field.tag == 4 else {return}
+        guard let field = activeField, field.tag == 2 || field.tag == 3 || field.tag == 4 else {return}
         let keyboardFrame = keyboardSize.cgRectValue
         if self.view.frame.origin.y == 0 {
             self.view.frame.origin.y -= keyboardFrame.height
