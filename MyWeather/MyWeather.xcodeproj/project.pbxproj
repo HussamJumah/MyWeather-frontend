@@ -113,8 +113,10 @@
 				2EF8DB7D23A341EA00543CF2 /* Cells */,
 				2E9879E923A33A79006D600C /* Models */,
 				2E9879E523A3386E006D600C /* View Controllers */,
-				2E519B7523920A59000AFF3F /* AppDelegate.swift */,
+				6BA75A3823A568B9008C53C3 /* Configuration */,
+				6BA75A3B23A56A6A008C53C3 /* Managers */,
 				2E519B7723920A59000AFF3F /* SceneDelegate.swift */,
+				2E519B7523920A59000AFF3F /* AppDelegate.swift */,
 				2E519B7B23920A59000AFF3F /* Main.storyboard */,
 				2E519B7E23920A5B000AFF3F /* Assets.xcassets */,
 				2E519B8023920A5B000AFF3F /* LaunchScreen.storyboard */,
@@ -289,6 +291,7 @@
 			files = (
 				2E2CDF8D23A8BE90008AA510 /* API.swift in Sources */,
 				2EF8DB7A23A33CC200543CF2 /* Weather.swift in Sources */,
+				6BA75A3D23A56A83008C53C3 /* DataManager.swift in Sources */,
 				2E519B7A23920A59000AFF3F /* LoginViewController.swift in Sources */,
 				2E8626C32393696F007640EB /* RegisterationViewController.swift in Sources */,
 				2E9879EB23A33A9D006D600C /* User.swift in Sources */,
@@ -301,6 +304,7 @@
 				2E519B7823920A59000AFF3F /* SceneDelegate.swift in Sources */,
 				2E2CDF8F23A8BFAE008AA510 /* NetworkService.swift in Sources */,
 				2EF8DB7C23A33E5A00543CF2 /* Session.swift in Sources */,
+				6BA75A3A23A568E9008C53C3 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
