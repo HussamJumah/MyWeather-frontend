@@ -12,6 +12,7 @@ import SwiftyJSON
 class HomePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Variable
     var currentWeather: Weather?
+    var currentZipcode: String?
     
     // Outlets
     @IBOutlet weak var SearchNewLocation:UITextField!
@@ -23,15 +24,34 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     
     // Actions
     @IBAction func sendCommentBtn(_ sender: Any) {
-        if let weather = self.currentWeather, let user = Session.loggedInUser {
-            let comment = Comment(commenter: user, time: getCurrentTime(), text: self.commentField.text!)
-            weather.comments.append(comment)
+        if let weather = self.currentWeather, let user = Session.loggedInUser, let zipcode = self.currentZipcode {
+            var body = Dictionary<String, Any>()
             
-            self.commentsTable.beginUpdates()
-            let index = NSIndexPath(row: weather.comments.count-1, section: 0) as IndexPath
-            self.commentsTable.insertRows(at: [index], with: .top)
-            self.commentsTable.endUpdates()
-            self.commentsTable.scrollToRow(at: index, at: .bottom, animated: true)
+            body["commenter"] = user.id
+            body["comment"] = self.commentField.text!
+  
+            NetworkService.standard.request(target: .comment(body: body, zipcode: zipcode), success: { (data) in
+                let response = JSON(data as Any)
+                let comment = Comment.FromJSON(response)
+                
+                weather.comments.append(comment)
+                self.commentsTable.beginUpdates()
+                let index = NSIndexPath(row: weather.comments.count-1, section: 0) as IndexPath
+                self.commentsTable.insertRows(at: [index], with: .top)
+                self.commentsTable.endUpdates()
+                self.commentsTable.scrollToRow(at: index, at: .bottom, animated: true)
+            }, error: { (error) in
+                let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }) { (failure) in
+                let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+
         }
     }
 
@@ -40,7 +60,10 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         
         self.commentsTable.delegate = self
         self.commentsTable.dataSource = self
@@ -55,6 +78,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
                 print(response)
                 let weather = Weather.FromJSON(response)
                 self.currentWeather = weather
+                self.currentZipcode = user.defaultZipcode
                 self.updateView()
             }, error: { (errorr) in
                 let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
@@ -72,6 +96,19 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         
         getCurrentDate()
 
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func updateView() {
@@ -143,9 +180,10 @@ extension HomePageViewController: UITextFieldDelegate {
       print("DONE")
         NetworkService.standard.request(target: .search(zipcode: SearchNewLocation.text!), success: { (data) in
             let response = JSON(data as Any)
-            print(response)
+            
             let weather = Weather.FromJSON(response)
             self.currentWeather = weather
+            self.currentZipcode = self.SearchNewLocation.text!
             self.updateView()
         }, error: { (errorr) in
             let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)

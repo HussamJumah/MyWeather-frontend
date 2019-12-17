@@ -9,7 +9,7 @@ public enum API {
 
 extension API: TargetType {
     public var baseURL: URL {
-        return URL(string: "https://65dc3dd1.ngrok.io")!
+        return URL(string: "https://myweathercsi.herokuapp.com")!
     }
     
     public var path: String {
@@ -36,7 +36,7 @@ extension API: TargetType {
     
     public var task: Task {
         switch self {
-            case .register(let body), .login(let body):
+        case .register(let body), .login(let body), .comment(let body, _):
                 return .requestParameters(parameters: body, encoding: JSONEncoding.default)
             default:
                 return .requestPlain
