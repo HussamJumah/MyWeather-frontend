@@ -10,6 +10,7 @@
 		2E2CDF8D23A8BE90008AA510 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CDF8C23A8BE90008AA510 /* API.swift */; };
 		2E2CDF8F23A8BFAE008AA510 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CDF8E23A8BFAE008AA510 /* NetworkService.swift */; };
 		2E2CDF9123A8CDA9008AA510 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CDF9023A8CDA9008AA510 /* UIViewController.swift */; };
+		2E2CDF9423A943CE008AA510 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CDF9323A943CE008AA510 /* UITextField.swift */; };
 		2E519B7623920A59000AFF3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E519B7523920A59000AFF3F /* AppDelegate.swift */; };
 		2E519B7823920A59000AFF3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E519B7723920A59000AFF3F /* SceneDelegate.swift */; };
 		2E519B7A23920A59000AFF3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E519B7923920A59000AFF3F /* LoginViewController.swift */; };
@@ -32,6 +33,7 @@
 		2E2CDF8C23A8BE90008AA510 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2E2CDF8E23A8BFAE008AA510 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2E2CDF9023A8CDA9008AA510 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2E2CDF9323A943CE008AA510 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		2E519B7223920A59000AFF3F /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E519B7523920A59000AFF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E519B7723920A59000AFF3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,10 +78,18 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		2E519B6923920A59000AFF3F = {
+		2E2CDF9223A943BC008AA510 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				2E2CDF9023A8CDA9008AA510 /* UIViewController.swift */,
+				2E2CDF9323A943CE008AA510 /* UITextField.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2E519B6923920A59000AFF3F = {
+			isa = PBXGroup;
+			children = (
 				2E519B7423920A59000AFF3F /* MyWeather */,
 				2E519B7323920A59000AFF3F /* Products */,
 				2E9879E623A339FF006D600C /* Frameworks */,
@@ -98,6 +108,7 @@
 		2E519B7423920A59000AFF3F /* MyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				2E2CDF9223A943BC008AA510 /* Extensions */,
 				2E2CDF8B23A8BE7A008AA510 /* Network */,
 				2EF8DB7D23A341EA00543CF2 /* Cells */,
 				2E9879E923A33A79006D600C /* Models */,
@@ -285,6 +296,7 @@
 				2E519B7623920A59000AFF3F /* AppDelegate.swift in Sources */,
 				2E2CDF9123A8CDA9008AA510 /* UIViewController.swift in Sources */,
 				2E8626C523946AEE007640EB /* HomePageViewController.swift in Sources */,
+				2E2CDF9423A943CE008AA510 /* UITextField.swift in Sources */,
 				2EF8DB8023A3435000543CF2 /* CommentTableViewCell.swift in Sources */,
 				2E519B7823920A59000AFF3F /* SceneDelegate.swift in Sources */,
 				2E2CDF8F23A8BFAE008AA510 /* NetworkService.swift in Sources */,
@@ -434,14 +446,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X9PWBGL7CW;
+				DEVELOPMENT_TEAM = 3Q76DGNCRR;
 				INFOPLIST_FILE = MyWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hmgm.MyWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hussam.myweather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -454,14 +466,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X9PWBGL7CW;
+				DEVELOPMENT_TEAM = 3Q76DGNCRR;
 				INFOPLIST_FILE = MyWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hmgm.MyWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hussam.myweather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

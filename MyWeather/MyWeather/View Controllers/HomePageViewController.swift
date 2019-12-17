@@ -13,9 +13,14 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     // Variable
     var currentWeather: Weather?
     var currentZipcode: String?
+    var activeField: UITextField?
     
     // Outlets
-    @IBOutlet weak var SearchNewLocation:UITextField!
+    @IBOutlet weak var SearchNewLocation:UITextField! {
+        didSet {
+            SearchNewLocation?.addDoneCancelToolbar(onDone: (target: self, action: #selector(performTextFieldSearch)), doneText: "Search")
+        }
+    }
     @IBOutlet weak var weatherLocation: UILabel!
     @IBOutlet weak var commentsTable: UITableView!
     @IBOutlet weak var tempLabel: UILabel!
@@ -33,7 +38,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             NetworkService.standard.request(target: .comment(body: body, zipcode: zipcode), success: { (data) in
                 let response = JSON(data as Any)
                 let comment = Comment.FromJSON(response)
-                
+                comment.commenter = user
                 weather.comments.append(comment)
                 self.commentsTable.beginUpdates()
                 let index = NSIndexPath(row: weather.comments.count-1, section: 0) as IndexPath
@@ -54,12 +59,36 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
 
         }
     }
+    
+    @IBAction func refreshBtn(_ sender: Any) {
+        guard let zipcode = self.currentZipcode else {return}
+        NetworkService.standard.request(target: .search(zipcode: zipcode), success: { (data) in
+            let response = JSON(data as Any)
+            print(response)
+            let weather = Weather.FromJSON(response)
+            self.currentWeather = weather
+            self.updateView()
+        }, error: { (errorr) in
+            let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }) { (failure) in
+            let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
 
     
     @IBOutlet weak var CurrentDate: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        self.SearchNewLocation.delegate = self
+        self.commentField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -68,7 +97,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         self.commentsTable.delegate = self
         self.commentsTable.dataSource = self
         self.commentsTable.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsCellId")
-        self.SearchNewLocation.delegate = self
+        
         if let user = Session.loggedInUser {
 //            self.weatherLocation.text = user.defaultZipcode
 //            self.currentWeather = getWeather(zipcode: user.defaultZipcode)
@@ -97,11 +126,15 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         getCurrentDate()
 
     }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+        guard let userInfo = notification.userInfo else {return}
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+        // tag 1 = comment field
+        guard let field = activeField, field.tag == 1 else {return}
+        let keyboardFrame = keyboardSize.cgRectValue
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= keyboardFrame.height
         }
     }
 
@@ -134,16 +167,6 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         let str = formatter.string(from: Date())
         return str
     }
-
-    
-//    func getWeather(zipcode: String) -> Weather{
-//
-//        // Request frorm backend the location
-////        let comment1 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello")
-////        let comment2 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello2")
-////        let comment3 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello3")
-////        return Weather(city: "New York", temp: "44", weatherDescription: "Partly Cloudy", comments: [comment1, comment2, comment3])
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -168,16 +191,16 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
 
 extension HomePageViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
-        //textField code
-
         textField.resignFirstResponder()  //if desired
-        performAction()
+        
+        // If the textfield is equal to the search
+        if textField.tag == 0 {
+            performTextFieldSearch()
+        }
         return true
     }
 
-    func performAction() {
-      print("DONE")
+    @objc func performTextFieldSearch() {
         NetworkService.standard.request(target: .search(zipcode: SearchNewLocation.text!), success: { (data) in
             let response = JSON(data as Any)
             
@@ -196,5 +219,17 @@ extension HomePageViewController: UITextFieldDelegate {
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
         }
+        
+        if let field = self.activeField {
+            field.resignFirstResponder()
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeField = nil
     }
 }
