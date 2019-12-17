@@ -9,7 +9,8 @@
 import UIKit
 import SwiftyJSON
 class LoginViewController: UIViewController {
-
+    var activeField: UITextField?
+    
     // Outlets
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var PasswordTextFieeld: UITextField!
@@ -58,8 +59,39 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.UsernameTextField.delegate = self
+        self.PasswordTextFieeld.delegate = self
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+           if self.view.frame.origin.y == 0 {
+               self.view.frame.origin.y -= 55
+           }
+       }
+
+       @objc func keyboardWillHide(notification: NSNotification) {
+           if view.frame.origin.y != 0 {
+               self.view.frame.origin.y = 0
+           }
+       }
 
 }
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeField = nil
+    }
+}
+
 

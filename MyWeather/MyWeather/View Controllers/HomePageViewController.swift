@@ -87,6 +87,7 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
         self.SearchNewLocation.delegate = self
         self.commentField.delegate = self
         
