@@ -245,7 +245,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Default Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c3x-5E-Ksc">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Default Zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c3x-5E-Ksc">
                                 <rect key="frame" x="24" y="524" width="327" height="42"/>
                                 <color key="backgroundColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="0.53000000000000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -253,7 +253,7 @@
                                 </constraints>
                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAl-Nx-RmM">
                                 <rect key="frame" x="80" y="603" width="215" height="55"/>
@@ -318,7 +318,10 @@
                     <navigationItem key="navigationItem" id="WH9-A6-Gfe"/>
                     <connections>
                         <outlet property="confirmField" destination="p9e-kt-cel" id="gSu-Zw-tkf"/>
+                        <outlet property="defaultZipcode" destination="c3x-5E-Ksc" id="3yp-wo-y79"/>
+                        <outlet property="emailField" destination="JPc-Z9-3ZG" id="N8g-lM-0On"/>
                         <outlet property="passwordField" destination="zch-Op-u5W" id="XPy-Sm-aKZ"/>
+                        <outlet property="usernameField" destination="DC6-2L-jnX" id="QaC-xa-vA9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxG-jS-naZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

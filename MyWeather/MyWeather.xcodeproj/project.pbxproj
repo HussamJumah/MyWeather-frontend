@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E2CDF8D23A8BE90008AA510 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CDF8C23A8BE90008AA510 /* API.swift */; };
+		2E2CDF8F23A8BFAE008AA510 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CDF8E23A8BFAE008AA510 /* NetworkService.swift */; };
+		2E2CDF9123A8CDA9008AA510 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2CDF9023A8CDA9008AA510 /* UIViewController.swift */; };
 		2E519B7623920A59000AFF3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E519B7523920A59000AFF3F /* AppDelegate.swift */; };
 		2E519B7823920A59000AFF3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E519B7723920A59000AFF3F /* SceneDelegate.swift */; };
 		2E519B7A23920A59000AFF3F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E519B7923920A59000AFF3F /* LoginViewController.swift */; };
@@ -22,9 +25,13 @@
 		2EF8DB7C23A33E5A00543CF2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8DB7B23A33E5A00543CF2 /* Session.swift */; };
 		2EF8DB8023A3435000543CF2 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF8DB7E23A3435000543CF2 /* CommentTableViewCell.swift */; };
 		2EF8DB8123A3435000543CF2 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EF8DB7F23A3435000543CF2 /* CommentTableViewCell.xib */; };
+		A0C48460AF914B996BDEA604 /* Pods_MyWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757678ED152D6AD505559771 /* Pods_MyWeather.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E2CDF8C23A8BE90008AA510 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		2E2CDF8E23A8BFAE008AA510 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		2E2CDF9023A8CDA9008AA510 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2E519B7223920A59000AFF3F /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E519B7523920A59000AFF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E519B7723920A59000AFF3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +49,9 @@
 		2EF8DB7B23A33E5A00543CF2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		2EF8DB7E23A3435000543CF2 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		2EF8DB7F23A3435000543CF2 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		757678ED152D6AD505559771 /* Pods_MyWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWeather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B27FACDC94A5C95E5ED4EEE /* Pods-MyWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWeather.debug.xcconfig"; path = "Target Support Files/Pods-MyWeather/Pods-MyWeather.debug.xcconfig"; sourceTree = "<group>"; };
+		F4AD046AF7A1EC143E11E6B7 /* Pods-MyWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWeather.release.xcconfig"; path = "Target Support Files/Pods-MyWeather/Pods-MyWeather.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,18 +60,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E9879E823A339FF006D600C /* MapKit.framework in Frameworks */,
+				A0C48460AF914B996BDEA604 /* Pods_MyWeather.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E2CDF8B23A8BE7A008AA510 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2E2CDF8C23A8BE90008AA510 /* API.swift */,
+				2E2CDF8E23A8BFAE008AA510 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		2E519B6923920A59000AFF3F = {
 			isa = PBXGroup;
 			children = (
+				2E2CDF9023A8CDA9008AA510 /* UIViewController.swift */,
 				2E519B7423920A59000AFF3F /* MyWeather */,
 				2E519B7323920A59000AFF3F /* Products */,
 				2E9879E623A339FF006D600C /* Frameworks */,
+				C5F7DBD734E2A969852BCDBF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +98,7 @@
 		2E519B7423920A59000AFF3F /* MyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				2E2CDF8B23A8BE7A008AA510 /* Network */,
 				2EF8DB7D23A341EA00543CF2 /* Cells */,
 				2E9879E923A33A79006D600C /* Models */,
 				2E9879E523A3386E006D600C /* View Controllers */,
@@ -104,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				2E9879E723A339FF006D600C /* MapKit.framework */,
+				757678ED152D6AD505559771 /* Pods_MyWeather.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,6 +151,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		C5F7DBD734E2A969852BCDBF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B27FACDC94A5C95E5ED4EEE /* Pods-MyWeather.debug.xcconfig */,
+				F4AD046AF7A1EC143E11E6B7 /* Pods-MyWeather.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E519B8623920A5B000AFF3F /* Build configuration list for PBXNativeTarget "MyWeather" */;
 			buildPhases = (
+				D28E7BDD4B422A045D569CDE /* [CP] Check Pods Manifest.lock */,
 				2E519B6E23920A59000AFF3F /* Sources */,
 				2E519B6F23920A59000AFF3F /* Frameworks */,
 				2E519B7023920A59000AFF3F /* Resources */,
+				6BECAC48E1F8C3D1ECD87A2D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,20 +229,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6BECAC48E1F8C3D1ECD87A2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyWeather/Pods-MyWeather-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyWeather/Pods-MyWeather-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyWeather/Pods-MyWeather-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D28E7BDD4B422A045D569CDE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyWeather-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2E519B6E23920A59000AFF3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E2CDF8D23A8BE90008AA510 /* API.swift in Sources */,
 				2EF8DB7A23A33CC200543CF2 /* Weather.swift in Sources */,
 				2E519B7A23920A59000AFF3F /* LoginViewController.swift in Sources */,
 				2E8626C32393696F007640EB /* RegisterationViewController.swift in Sources */,
 				2E9879EB23A33A9D006D600C /* User.swift in Sources */,
 				2EF8DB7823A33C6100543CF2 /* Comment.swift in Sources */,
 				2E519B7623920A59000AFF3F /* AppDelegate.swift in Sources */,
+				2E2CDF9123A8CDA9008AA510 /* UIViewController.swift in Sources */,
 				2E8626C523946AEE007640EB /* HomePageViewController.swift in Sources */,
 				2EF8DB8023A3435000543CF2 /* CommentTableViewCell.swift in Sources */,
 				2E519B7823920A59000AFF3F /* SceneDelegate.swift in Sources */,
+				2E2CDF8F23A8BFAE008AA510 /* NetworkService.swift in Sources */,
 				2EF8DB7C23A33E5A00543CF2 /* Session.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +430,7 @@
 		};
 		2E519B8723920A5B000AFF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B27FACDC94A5C95E5ED4EEE /* Pods-MyWeather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -369,6 +450,7 @@
 		};
 		2E519B8823920A5B000AFF3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4AD046AF7A1EC143E11E6B7 /* Pods-MyWeather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

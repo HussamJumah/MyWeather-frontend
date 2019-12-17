@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Comment {
     var commenter: User
@@ -18,4 +19,12 @@ class Comment {
         self.time = time
         self.text = text
     }
+    
+    static func FromJSON(_ json: JSON) -> Comment {
+        let comment = json["comment"].stringValue
+        let commenter = User.FromJSON(json["commenter"])
+        let commentedAt = json["commentedAt"].stringValue
+        
+        return Comment(commenter: commenter, time: commentedAt, text: comment)
+      }
 }

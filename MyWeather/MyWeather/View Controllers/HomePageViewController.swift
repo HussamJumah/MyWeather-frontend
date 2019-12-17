@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class HomePageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // Variable
@@ -33,19 +34,40 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
             self.commentsTable.scrollToRow(at: index, at: .bottom, animated: true)
         }
     }
+
     
     @IBOutlet weak var CurrentDate: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+
         
         self.commentsTable.delegate = self
         self.commentsTable.dataSource = self
         self.commentsTable.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentsCellId")
-        
+        self.SearchNewLocation.delegate = self
         if let user = Session.loggedInUser {
-            self.weatherLocation.text = user.defaultLocation
-            self.currentWeather = getWeather(location: user.defaultLocation)
-            self.updateView()
+//            self.weatherLocation.text = user.defaultZipcode
+//            self.currentWeather = getWeather(zipcode: user.defaultZipcode)
+            
+            NetworkService.standard.request(target: .search(zipcode: user.defaultZipcode), success: { (data) in
+                let response = JSON(data as Any)
+                print(response)
+                let weather = Weather.FromJSON(response)
+                self.currentWeather = weather
+                self.updateView()
+            }, error: { (errorr) in
+                let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }) { (failure) in
+                let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+            
         }
         
         getCurrentDate()
@@ -54,10 +76,11 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     
     func updateView() {
         guard let weather = currentWeather else {return}
-        self.weatherLocation.text = weather.location
+        self.weatherLocation.text = weather.city
         // TODO: Replace the hyphan to degree symbol
-        self.tempLabel.text = String(weather.temp) + "˚F"
+        self.tempLabel.text = weather.temp + "˚F"
         self.weatherrDescriptionField.text = weather.weatherDescription
+        self.commentsTable.reloadData()
     }
     
     func getCurrentDate(){
@@ -76,13 +99,14 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     
-    func getWeather(location: String) -> Weather {
-        // Request frorm backend the location
-        let comment1 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello")
-        let comment2 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello2")
-        let comment3 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello3")
-        return Weather(location: "New York City", time: "1:41", temp: 44, weatherDescription: "Partly Cloudy", comments: [comment1, comment2, comment3])
-    }
+//    func getWeather(zipcode: String) -> Weather{
+//
+//        // Request frorm backend the location
+////        let comment1 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello")
+////        let comment2 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello2")
+////        let comment3 = Comment(commenter: Session.loggedInUser!, time: "4:00", text: "Hello3")
+////        return Weather(city: "New York", temp: "44", weatherDescription: "Partly Cloudy", comments: [comment1, comment2, comment3])
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -102,5 +126,37 @@ class HomePageViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         return cell
+    }
+}
+
+extension HomePageViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        //textField code
+
+        textField.resignFirstResponder()  //if desired
+        performAction()
+        return true
+    }
+
+    func performAction() {
+      print("DONE")
+        NetworkService.standard.request(target: .search(zipcode: SearchNewLocation.text!), success: { (data) in
+            let response = JSON(data as Any)
+            print(response)
+            let weather = Weather.FromJSON(response)
+            self.currentWeather = weather
+            self.updateView()
+        }, error: { (errorr) in
+            let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }) { (failure) in
+            let alertController = UIAlertController(title: "Error", message: "Unknown error occured", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
