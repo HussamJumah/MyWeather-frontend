@@ -1,5 +1,9 @@
 # MyWeather-frontend
 
+## Credits
+1. [Hussam Jumah](https://github.com/HussamJumah/)
+2. [Greik Kadriu](https://github.com/Greik98)
+
 ## Running code (MacOS is required)
 
 1. You need to have the backend deployed somewhere, you can start with localhost deployment. Clone backend from here: https://github.com/HussamJumah/MyWeather-backend
